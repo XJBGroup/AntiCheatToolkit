@@ -16,7 +16,7 @@ fn calc_lcs(a: &[u8], b: &[u8]) -> f32 {
             }
         }
     }
-    dp[idx][b.len() - 1] as f32 / min(a.len(),b.len()) as f32
+    dp[idx][b.len() - 1] as f32 / min(a.len(), b.len()) as f32
 }
 
 #[inline]
@@ -73,7 +73,10 @@ fn monotone(a: &Vec<i32>, k: usize) -> Vec<i32> {
 
 #[inline]
 fn regular(a: &str) -> Vec<u8> {
-    let re = ExecBuilder::new("\r|\n|\\s|/\\*(.|\n)*?\\*/|//(.|\n)*?\n").build().unwrap().into_regex();
+    let re = ExecBuilder::new("\r|\n|\\s|/\\*(.|\n)*?\\*/|//(.|\n)*?\n")
+        .build()
+        .unwrap()
+        .into_regex();
     let seq: String = re.replace_all(a, "").into_owned();
     println!("{}", seq);
     seq.as_bytes().to_owned()
@@ -106,9 +109,7 @@ fn winnowing(_a: &str, _b: &str, k: usize, m: usize, seed: i64, MOD: i64) -> f32
         }
     }
     println!("{} {} {}", pack_a.len(), pack_b.len(), similar);
-    similar as f32 / min(pack_a.len(),pack_b.len()) as f32
+    similar as f32 / min(pack_a.len(), pack_b.len()) as f32
 }
 
-fn main() {
-
-}
+fn main() {}
